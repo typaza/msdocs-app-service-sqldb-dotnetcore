@@ -14,9 +14,9 @@ namespace DotNetCoreSqlDb
         public override void OnActionExecuted(ActionExecutedContext context)
         {
             _stopwatch.Stop();
-            if (context.Result is ViewResult)
+            if (context.Result is ViewResult result)
             {
-                ((ViewResult)context.Result).ViewData["TimeElapsed"] = _stopwatch.Elapsed;
+                result.ViewData["TimeElapsed"] = _stopwatch.Elapsed;
             }
             _stopwatch.Reset();
         }
